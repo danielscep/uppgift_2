@@ -30,12 +30,13 @@ namespace ConsoleApp
                         {
                             output += input[x];
                         }
+                        lastIndex = i;
                         break;
                     }
                 }
                 Console.Write(input);
 
-                Console.SetCursorPosition(index, Console.CursorTop);
+                Console.SetCursorPosition(lastIndex, Console.CursorTop);
 
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.Write(output);
