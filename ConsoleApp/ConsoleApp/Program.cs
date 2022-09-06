@@ -1,50 +1,47 @@
-﻿using System.Data.SqlTypes;
-
-namespace ConsoleApp
+﻿namespace ConsoleApp
 {
     internal class Program
     {
         static void Main(string[] args)
         {
-            string numbers = "123456789";
-            string input = "29535123p48723487597645723645";
-            string output = string.Empty;
-            int index = 0;
-            int tempIndex = 0;
+            string InputChars = "29535123p48723487597645723645";
+            string validChars = "123456789";
 
-            int lastIndex = 0;
-
-            for (int i = 0; i < input.Length; i++)
+            for (int i = 0; i < InputChars.Length; i++) //InputChars loop
             {
-                index = 0;
-                for (int k = 0; k < numbers.Length; k++)
+                for (int k = 0; k < validChars.Length; k++) // validChars loop
                 {
-                    if (input[i] == numbers[k])
+                    if (InputChars[i] == validChars[k]) 
                     {
-                        tempIndex = input.IndexOf(numbers[k], i + 1);
-                        if (tempIndex == -1) break;
-                        index = tempIndex;
-                        //Console.WriteLine(i);
-                        //Console.WriteLine(index);
-                        for (int x = i; x < index; x++)
+                        int index = InputChars.IndexOf(validChars[k], i + 1);
+                        if (index == -1) continue;
+                        string match = InputChars.Substring(i, index - i + 1);
+
+                        foreach (char c in match)
                         {
-                            output += input[x];
+                            if (!Char.IsDigit(c))
+                            {
+                                bool nonDigit = true;
+                            }
                         }
-                        lastIndex = i;
-                        break;
+
+                        /*
+                        foreach (char c in match)
+                        {
+                            if (!Char.IsDigit(c))
+                            {
+                                goto LoopEnd;
+                            }
+                        }
+                        */
+                        Console.Write(InputChars);
+                        Console.SetCursorPosition(i, Console.CursorTop);
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine(match);
+                        Console.ForegroundColor = ConsoleColor.White;
+                        LoopEnd:;
                     }
                 }
-                Console.Write(input);
-
-                Console.SetCursorPosition(lastIndex, Console.CursorTop);
-
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.Write(output);
-                Console.ForegroundColor = ConsoleColor.White;
-
-                Console.WriteLine("");
-                //sumString += output;
-                output = "";
             }
         }
     }
