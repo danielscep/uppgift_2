@@ -25,13 +25,14 @@ namespace ConsoleApp
                 {
                     Console.Write(input);
                     Console.SetCursorPosition(i, Console.CursorTop);
-                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.ForegroundColor = ConsoleColor.DarkYellow;
                     Console.WriteLine(match);
                     Console.ForegroundColor = ConsoleColor.White;
+
                     sum += Convert.ToInt64(match);
                 }
             }
-            Console.WriteLine(sum.ToString());
+            Console.WriteLine($"sum of all matches: {sum.ToString()}");
         }
     }
 }
